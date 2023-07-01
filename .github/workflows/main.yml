@@ -1,0 +1,241 @@
+name: Setup Java JDK
+- name: Download a Build Artifact
+  uses: actions/download-artifact@v2.1.1
+  with:
+    # Artifact name
+    name: # optional
+    # Destination path
+    path: # optional- name: Download a Build Artifact
+
+  uses: actions/download-artifact@v2.1.1
+
+  with:
+
+    # Artifact name
+
+    name: # optional
+
+    # Destination path
+
+    path: # optional
+  uses: actions/setup-java@v1.4.4
+
+  with:
+
+    # The Java version to make available on the path. Takes a whole or semver Java version, or 1.x syntax (e.g. 1.8 => Java 8.x). Early access versions can be specified in the form of e.g. 14-ea, 14.0.0-ea, or 14.0.0-ea.28
+
+    java-version: 
+
+    # The package type (jre, jdk, jdk+fx)
+
+    java-package: # optional, default is jdk
+
+    # The architecture (x86, x64) of the package.
+
+    architecture: # optional, default is x64
+
+    # Path to where the compressed JDK is located. The path could be in your source repository or a local path on the agent.
+
+    jdkFile: # optional
+
+    # ID of the distributionManagement repository in the pom.xml file. Default is `github`
+
+    server-id: # optional, default is github
+
+    # Environment variable name for the username for authentication to the Apache Maven repository. Default is $GITHUB_ACTOR
+
+    server-username: # optional, default is GITHUB_ACTOR
+
+    # Environment variable name for password or token for authentication to the Apache Maven repository. Default is $GITHUB_TOKEN
+
+    server-password: # optional, default is GITHUB_TOKEN
+
+    # Path to where the settings.xml file will be written. Default is ~/.m2.
+
+    settings-path: # optional
+
+    # GPG private key to import. Default is empty string.
+
+    gpg-private-key: # optional
+
+    # Environment variable name for the GPG private key passphrase. Default is $GPG_PASSPHRASE.
+
+    gpg-passphrase: # optional
+
+BreadcrumbsTrusty/.github/workflows
+
+/
+
+codeql.yml
+
+in
+
+main
+
+Edit
+
+Preview
+
+Indent mode
+
+Spaces
+
+Indent size
+
+2
+
+Line wrap mode
+
+No wrap
+
+1
+
+# For most projects, this workflow file will not need changing; you simply need
+
+2
+
+# to commit it to your repository.
+
+3
+
+#
+
+4
+
+# You may wish to alter this file to override the set of languages analyzed,
+
+5
+
+# or to provide custom queries or build logic.
+
+6
+
+#
+
+7
+
+# ******** NOTE ********
+
+8
+
+# We have attempted to detect the languages in your repository. Please check
+
+9
+
+# the `language` matrix defined below to confirm you have the correct set of
+
+10
+
+# supported CodeQL languages.
+
+11
+
+#
+
+12
+
+name: "CodeQL"
+
+13
+
+14
+
+on:
+
+15
+
+  push:
+
+16
+
+    branches: [ "main" ]
+
+17
+
+  pull_request:
+
+18
+
+    # The branches below must be a subset of the branches above
+
+19
+
+    branches: [ "main" ]
+
+20
+
+  schedule:
+
+21
+
+    - cron: '45 16 * * 3'
+
+22
+
+23
+
+jobs:
+
+24
+
+  analyze:
+
+25
+
+    name: Analyze
+
+26
+
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+
+27
+
+    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+
+28
+
+    permissions:
+
+29
+
+      actions: read
+
+30
+
+      contents: read
+
+31
+
+      security-events: write
+
+32
+
+33
+
+    strategy:
+
+34
+
+      fail-fast: false
+
+35
+
+      matrix:
+
+36
+
+        language: [  ]
+
+37
+
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby', 'swift' ]
+
+38
+
+        # Use only 'java' to analyze code written in Java, Kotlin or both
+
+39
+
+        # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
+
+Use Control + Space to trigger autocomplete in most situations.
